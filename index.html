@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SoundBrowse — a minimal sound browser for macOS</title>
+  <meta name="description" content="SoundBrowse is a minimal, Ableton-style sound file browser for macOS. Instant search over huge libraries, looping previews, tag filters, and ratings." />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+      background: #141414;
+      color: #c9c9c9;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    main { flex: 1; width: min(720px, 92vw); margin: 0 auto; padding: 64px 0 48px; }
+    .hero { display: flex; align-items: center; gap: 22px; margin-bottom: 14px; }
+    .hero img, .hero svg { width: 88px; height: 88px; }
+    h1 { font-size: 40px; color: #ececec; letter-spacing: -0.02em; }
+    .tag { font-size: 19px; color: #9a9a9a; margin-bottom: 34px; }
+    .dl {
+      display: inline-block;
+      padding: 12px 26px;
+      border-radius: 9px;
+      background: #f7a927;
+      color: #1a1204;
+      font-weight: 600;
+      text-decoration: none;
+      margin-bottom: 10px;
+    }
+    .dl:hover { background: #ffbc45; }
+    .dl-note { font-size: 13px; color: #7f7f7f; margin-bottom: 8px; }
+    pre {
+      background: #1e1e1e;
+      border: 1px solid #2c2c2c;
+      border-radius: 8px;
+      padding: 12px 14px;
+      font: 13px/1.5 "SF Mono", Menlo, monospace;
+      color: #e8e8e8;
+      overflow-x: auto;
+      margin: 8px 0 40px;
+      user-select: all;
+    }
+    pre b { color: #f7a927; font-weight: 400; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 22px 28px; margin-bottom: 44px; }
+    .grid h3 { font-size: 15px; color: #ececec; margin-bottom: 4px; }
+    .grid p { font-size: 14px; color: #9a9a9a; }
+    .fine { font-size: 13px; color: #6f6f6f; }
+    .fine a { color: #9a9a9a; }
+    footer { padding: 22px 0; text-align: center; font-size: 13px; color: #565656; }
+    footer a { color: #7f7f7f; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="hero">
+      <img src="icon.png" alt="SoundBrowse icon" />
+      <h1>SoundBrowse</h1>
+    </div>
+    <p class="tag">A minimal, Ableton-style sound browser for macOS. Point it at your sample folders, search everything instantly, audition on loop, and drag straight into your DAW.</p>
+
+    <a class="dl" href="https://github.com/Aeronyx/soundbrowse-releases/releases/latest/download/SoundBrowse-mac.zip">Download for Mac</a>
+    <p class="dl-note">Apple Silicon (M1 or later). The build is unsigned, so downloading via Terminal skips the Gatekeeper warning:</p>
+    <pre><b>curl</b> -L -o ~/Downloads/SoundBrowse-mac.zip https://github.com/Aeronyx/soundbrowse-releases/releases/latest/download/SoundBrowse-mac.zip</pre>
+
+    <div class="grid">
+      <div><h3>Instant search</h3><p>Terabyte libraries indexed in the background and searched in milliseconds, with results that mirror your folder structure.</p></div>
+      <div><h3>Looping preview</h3><p>Click a sound to audition it on repeat, scrub the waveform, repitch with a knob, and crossfade between auditions.</p></div>
+      <div><h3>Tag filters</h3><p>bpm:120, key:F#m, artist:name — read from file names and embedded metadata. Half and double time BPM matching included.</p></div>
+      <div><h3>Ratings</h3><p>Rank sounds on a 10-point star scale, filter by rating, and let SoundBrowse make room when a new sound takes the top spot.</p></div>
+      <div><h3>Drag it out</h3><p>Multi-select and drag files, or preconfigured preset pairs, directly into any DAW track.</p></div>
+      <div><h3>Yours</h3><p>Themes, density, accent colors, emoji places, renameable folders. Local-only: no accounts, no telemetry.</p></div>
+    </div>
+
+    <p class="fine">Previous versions and release notes live on the <a href="https://github.com/Aeronyx/soundbrowse-releases/releases">releases page</a>.</p>
+  </main>
+  <footer>SoundBrowse &middot; <a href="https://github.com/Aeronyx/soundbrowse-releases">Downloads on GitHub</a></footer>
+</body>
+</html>

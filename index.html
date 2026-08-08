@@ -113,6 +113,15 @@
 
     <p class="fine">Previous versions and release notes live on the <a href="https://github.com/soundbrowse/soundbrowse-releases/releases">releases page</a>.</p>
   </main>
-  <footer>SoundBrowse &middot; <a href="https://github.com/soundbrowse/soundbrowse-releases">Downloads on GitHub</a></footer>
+  <footer>SoundBrowse &middot; <span id="ver">v2.4.4</span> &middot; <a href="https://github.com/soundbrowse/soundbrowse-releases">Downloads on GitHub</a></footer>
+  <script>
+    /* Keep the footer version current even between site deploys. */
+    fetch('https://api.github.com/repos/soundbrowse/soundbrowse-releases/releases/latest')
+      .then((r) => (r.ok ? r.json() : null))
+      .then((rel) => {
+        if (rel && rel.tag_name) document.getElementById('ver').textContent = rel.tag_name;
+      })
+      .catch(() => {});
+  </script>
 </body>
 </html>

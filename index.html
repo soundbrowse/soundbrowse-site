@@ -44,6 +44,23 @@
       user-select: all;
     }
     pre b { color: #f7a927; font-weight: 400; }
+    .cmd { position: relative; margin: 8px 0 40px; }
+    .cmd pre { margin: 0; padding-right: 76px; }
+    .cmd .copy {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      padding: 4px 10px;
+      border: 1px solid #3a3a3a;
+      border-radius: 6px;
+      background: #2a2a2a;
+      color: #b5b5b5;
+      font: 12px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      cursor: pointer;
+    }
+    .cmd .copy:hover { background: #363636; color: #e8e8e8; }
+    .cmd .copy.done { color: #8fd18f; border-color: #4a5f4a; }
+    .os-h { font-size: 15px; color: #ececec; margin: 26px 0 2px; }
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 22px 28px; margin-bottom: 44px; }
     .grid h3 { font-size: 15px; color: #ececec; margin-bottom: 4px; }
     .grid p { font-size: 14px; color: #9a9a9a; }
@@ -100,21 +117,45 @@
 
     <a class="dl" href="https://github.com/soundbrowse/soundbrowse-releases/releases/latest/download/SoundBrowse-mac.zip">Download for Mac</a>
     <p class="dl-note">Apple Silicon (M1 or later). The build is unsigned, so downloading via Terminal skips the Gatekeeper warning:</p>
-    <pre><b>curl</b> -L -o ~/Downloads/SoundBrowse-mac.zip https://github.com/soundbrowse/soundbrowse-releases/releases/latest/download/SoundBrowse-mac.zip</pre>
+    <div class="cmd">
+      <pre><b>curl</b> -L -o ~/Downloads/SoundBrowse-mac.zip https://github.com/soundbrowse/soundbrowse-releases/releases/latest/download/SoundBrowse-mac.zip</pre>
+      <button class="copy" type="button">Copy</button>
+    </div>
+
+    <h3 class="os-h">Windows</h3>
+    <p class="dl-note">64-bit Windows 10 or later. Download <a href="https://github.com/soundbrowse/soundbrowse-releases/releases/latest/download/SoundBrowse-win.zip">SoundBrowse-win.zip</a>, or from PowerShell:</p>
+    <div class="cmd">
+      <pre><b>curl.exe</b> -L -o "$env:USERPROFILE\Downloads\SoundBrowse-win.zip" https://github.com/soundbrowse/soundbrowse-releases/releases/latest/download/SoundBrowse-win.zip</pre>
+      <button class="copy" type="button">Copy</button>
+    </div>
+    <p class="dl-note" style="margin-top: -30px; margin-bottom: 40px;">Unzip and run <b style="color:#f7a927">SoundBrowse.exe</b>. If SmartScreen appears, choose More info, then Run anyway (the build is unsigned).</p>
 
     <div class="grid">
       <div><h3>Instant search</h3><p>Terabyte libraries indexed in the background and searched in milliseconds, with results that mirror your folder structure.</p></div>
       <div><h3>Looping preview</h3><p>Click a sound to audition it on repeat, scrub the waveform, repitch with a knob, and crossfade between auditions.</p></div>
-      <div><h3>Tag filters</h3><p>bpm:120, key:F#m, artist:name — read from file names and embedded metadata. Half and double time BPM matching included.</p></div>
-      <div><h3>Ratings</h3><p>Rank sounds on a 10-point star scale, filter by rating, and let SoundBrowse make room when a new sound takes the top spot.</p></div>
+      <div><h3>Tag filters</h3><p>bpm:120, key:F#m, rating:80+ — read from file names, embedded metadata, and audio analysis. Half and double time BPM matching included.</p></div>
+      <div><h3>Ratings</h3><p>Score sounds out of 100 (or with stars), filter by rating, and let SoundBrowse make room when a new sound takes the top spot.</p></div>
       <div><h3>Drag it out</h3><p>Multi-select and drag files, or preconfigured preset pairs, directly into any DAW track.</p></div>
       <div><h3>Yours</h3><p>Themes, density, accent colors, emoji places, renameable folders. Local-only: no accounts, no telemetry.</p></div>
     </div>
 
     <p class="fine">Previous versions and release notes live on the <a href="https://github.com/soundbrowse/soundbrowse-releases/releases">releases page</a>.</p>
   </main>
-  <footer>SoundBrowse &middot; <span id="ver">v2.4.6</span> &middot; <a href="https://github.com/soundbrowse/soundbrowse-releases">Downloads on GitHub</a></footer>
+  <footer>SoundBrowse &middot; <span id="ver">v2.5.0</span> &middot; <a href="https://github.com/soundbrowse/soundbrowse-releases">Download on GitHub</a></footer>
   <script>
+    for (const btn of document.querySelectorAll('.cmd .copy')) {
+      btn.addEventListener('click', () => {
+        const text = btn.parentElement.querySelector('pre').textContent;
+        navigator.clipboard.writeText(text).then(() => {
+          btn.textContent = 'Copied';
+          btn.classList.add('done');
+          setTimeout(() => {
+            btn.textContent = 'Copy';
+            btn.classList.remove('done');
+          }, 1600);
+        });
+      });
+    }
     /* Keep the footer version current even between site deploys. */
     fetch('https://api.github.com/repos/soundbrowse/soundbrowse-releases/releases/latest')
       .then((r) => (r.ok ? r.json() : null))

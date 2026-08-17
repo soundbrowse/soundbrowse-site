@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SoundBrowse — a minimal sound browser for macOS</title>
-  <meta name="description" content="SoundBrowse is a minimal, Ableton-style sound file browser for macOS. Instant search over huge libraries, looping previews, tag filters, and ratings." />
+  <title>SoundBrowse — a minimal sound browser for macOS and Windows</title>
+  <meta name="description" content="SoundBrowse is a minimal, Ableton-style sound file browser for macOS and Windows. Instant search over huge libraries, looping previews, tag filters, and ratings." />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -113,8 +113,9 @@
       </svg>
       <h1>SoundBrowse</h1>
     </div>
-    <p class="tag">A minimal, Ableton-style sound browser for macOS. Point it at your sample folders, search everything instantly, audition on loop, and drag straight into your DAW.</p>
+    <p class="tag">A minimal, Ableton-style sound browser for macOS and Windows. Point it at your sample folders, search everything instantly, audition on loop, and drag straight into your DAW.</p>
 
+    <h3 class="os-h">Mac</h3>
     <a class="dl" href="https://github.com/soundbrowse/soundbrowse-releases/releases/latest/download/SoundBrowse-mac.zip">Download for Mac</a>
     <p class="dl-note">Apple Silicon (M1 or later). The build is unsigned, so downloading via Terminal skips the Gatekeeper warning:</p>
     <div class="cmd">
@@ -123,7 +124,8 @@
     </div>
 
     <h3 class="os-h">Windows</h3>
-    <p class="dl-note">64-bit Windows 10 or later. Download <a href="https://github.com/soundbrowse/soundbrowse-releases/releases/latest/download/SoundBrowse-win.zip">SoundBrowse-win.zip</a>, or from PowerShell:</p>
+    <a class="dl" href="https://github.com/soundbrowse/soundbrowse-releases/releases/latest/download/SoundBrowse-win.zip">Download for Windows</a>
+    <p class="dl-note">64-bit Windows 10 or later. Or from PowerShell:</p>
     <div class="cmd">
       <pre><b>curl.exe</b> -L -o "$env:USERPROFILE\Downloads\SoundBrowse-win.zip" https://github.com/soundbrowse/soundbrowse-releases/releases/latest/download/SoundBrowse-win.zip</pre>
       <button class="copy" type="button">Copy</button>
@@ -141,7 +143,7 @@
 
     <p class="fine">Previous versions and release notes live on the <a href="https://github.com/soundbrowse/soundbrowse-releases/releases">releases page</a>.</p>
   </main>
-  <footer>SoundBrowse &middot; <span id="ver">v2.5.1</span> &middot; <a href="https://github.com/soundbrowse/soundbrowse-releases">Download on GitHub</a></footer>
+  <footer>SoundBrowse &middot; <span id="ver">v2.5.2</span> &middot; <a href="https://github.com/soundbrowse/soundbrowse-releases">Download on GitHub</a></footer>
   <script>
     for (const btn of document.querySelectorAll('.cmd .copy')) {
       btn.addEventListener('click', () => {
